@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+    #container{
+        display: flex;
+        justify-content: space-between;
+    }
+    form{
+       margin-left: 120px;
+       margin-top: 30px;
+    }
+    input{
+        font-size: 25px;
+    }
+    h2{
+        cursor: pointer;
+        color: blue;
+       
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Login Page</h1>
+        <h2>
+            <a href="signup.html">Signup</a>
+        </h2>
+       </div>
+
+  <form action="">
+ 
+
+        <input id="email" type="email" placeholder="Enter your email">
+        <br>
+        <br>
+       
+        <input id="password" type="password" placeholder="enter your password">
+        <br>
+        <br>
+        <input type="submit">
+
+        
+  </form>
+    
+    
+</body>
+</html>
+<script>
+
+    document.querySelector("form").addEventListener("submit",myfuction);
+    
+
+    function myfuction(){
+        event.preventDefault()
+        // console.log("i am in funciton")
+
+        var email=document.querySelector("#email").value;
+        var password =document.querySelector("#password").value;
+        // console.log(email,password)
+          var count =0;
+        var data =JSON.parse(localStorage.getItem("userdata"))||[];
+        data.map(function(el){
+            if(email==el.email && password==el.password){
+               count++;
+            }
+        })
+        if(count>0){
+            alert("Login Successfully");
+            window.location.href ="mens.html"
+        }
+        else{
+            alert("Wrong User name and Password")
+        }
+    }
+
+</script>
