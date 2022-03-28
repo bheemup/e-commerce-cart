@@ -1,0 +1,124 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cart page</title>
+    <style>
+            #container{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: auoto;
+        gap: 20px;
+        }
+    #box{
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    }
+    h3{
+        align-items: flex-end;
+    }
+    .box2{
+        display: flex;
+        justify-content: space-between;
+    }
+    a{
+        font-size: 25px;
+    }
+
+    </style>
+    </head>
+    <body>
+    
+    <h1>Cart Page</h1>
+  <div>
+    <div class="box2">
+        <h4 id="item"></h4>
+        <a href="mens.html">Go to Men page</a>
+    </div>
+    <input id="promo" type="text" placeholder="Enter your primo Code">
+    <button>Apply Promo Code</button>
+  </div>
+    
+   <div class="box2">
+    <h3></h3>
+    <a href="payment.html">Proceed Payment</a>
+   </div>
+    
+    <div id="container"></div>
+    
+    
+</body>
+</html>
+<script>
+    var cartdata= JSON.parse(localStorage.getItem("cartdata"));
+
+   var totalprice= cartdata.reduce(function (sum,el){
+      return sum+el.price;
+    },0)
+   
+    document.querySelector("h3").innerText= `Total price is Rs ${totalprice}`
+    
+    var primobtn =document.querySelector("button");
+    primobtn.addEventListener("click",mufun);
+    function mufun(){
+        var primo =document.querySelector("#promo").value;
+   if(primo=="masai30"){
+    var newtotal =eval(totalprice-totalprice*30/100);
+    document.querySelector("h3").innerText= `Total price is Rs ${newtotal}`
+   }
+        
+    }
+
+   
+   
+    var items =document.querySelector("#item");
+    items.innerText= `Number of items   `+cartdata.length;
+  
+   
+    cartdata.map(function(el,index){
+                    var div =document.createElement("div");
+                    div.setAttribute("id","box")
+                    var btn =document.createElement("button");
+                    btn.innerText="Remove";
+                    btn.addEventListener("click",function(){
+                        removeitem(el,index);
+                    })
+
+                    var img =document.createElement("img");
+                    img.src=el.image_url;
+
+                    var name1 =document.createElement("h4");
+                name1.innerText=el.name;
+                name1.style.padding="10px"
+
+                var price=document.createElement("p");
+                price.innerText=el.price;
+
+                var srtrprice =document.createElement("p");
+                srtrprice.innerText=el.strikedoffprice;
+                srtrprice.style.textDecoration="line-through"
+
+                var box =document.createElement("div");
+                box.style.display="flex";
+                box.style.justifyContent="space-around"
+                box.append(price,srtrprice)
+
+
+                    div.append(btn,img,name1,box);
+                    document.querySelector("#container").append(div);
+
+               
+
+    })
+
+    function removeitem(el,index){
+    //  var newdata= cartdata.slice(1, 1);
+    //   localStorage.setItem("cartdata",JSON.stringify(cartdata));
+    // console.log(cartdata)
+     
+    }
+
+    
+</script>

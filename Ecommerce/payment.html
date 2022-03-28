@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        h3{
+            color: green;
+        }
+        input,button{
+            font-size: 20px;
+            margin-top: 15px;
+          
+        }
+        #box{
+            width: 60%;
+            height: 500px;
+            margin: auto;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          justify-content: center;
+          text-align: center;
+          padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <h1>Payment Page</h1>
+    <h3>Enter your Card Details</h3>
+    <input id="card" type="number" placeholder="Card Number">
+    <br>
+    <input id="exp" type="date" placeholder="Expiry Date of Card">
+    <br>
+    <input id="cvv" type="number" placeholder="CVV">
+    <br>
+    <button>Submit</button>
+</div>
+
+    
+</body>
+</html>
+<script>
+    document.querySelector("button").addEventListener("click",myf);
+    function myf(){
+        var card =document.querySelector("#card").value;
+        var expiry =document.querySelector("#exp").value;
+        var cvv =document.querySelector("#cvv").value;
+
+       if(card=='' || expiry==''|| cvv==''){
+           alert("please enter correct Details")
+       }
+       else{
+         window.location="otp.html"
+       }
+
+    }
+</script>

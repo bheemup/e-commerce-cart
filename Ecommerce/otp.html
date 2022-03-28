@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otp Page</title>
+    <style>
+#box5{
+    height: 200px;
+    width: 50%;
+   background-color: rgb(142, 108, 235);
+    margin: auto;
+    text-align: center;
+  padding: 50px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+input,button{
+    font-size: 25px;
+}
+    </style>
+
+</head>
+<body>
+    <div id="box5">
+        <input type="number" name="" id="otp" placeholder="Enter your OTP">
+     <br>
+     <br>
+     <button>Submit</button>
+    </div>
+
+</body>
+</html>
+<script>
+    document.querySelector("button").addEventListener("click",myfunction);
+
+    function myfunction(){
+        if(document.querySelector("#otp").value=="1234"){
+            alert("Payment Successful")
+           window.location="mens.html"
+        }
+        else{
+            alert("please enter correct OTP")
+        }
+
+    }
+</script>
